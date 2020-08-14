@@ -5,7 +5,7 @@ from sklearn.metrics import confusion_matrix, roc_curve, auc
 from sklearn.utils.multiclass import unique_labels
 from scipy import interp
 
-def plot_multiclass_roc_curve(session, y_true='test_y_trues', y_pred='test_y_preds', classes=None, title="", average="macro"):
+def plot_multiclass_roc_curve(y_true, y_pred, classes=None, title="", average="macro"):
     '''
     Functions to plot ROC curve 
     
@@ -17,19 +17,19 @@ def plot_multiclass_roc_curve(session, y_true='test_y_trues', y_pred='test_y_pre
     '''
     
     # Loading session if session is a string
-    if isinstance(session, str):
-        with open(session, "rb") as f:
-            session = pickle.load(f)
+#     if isinstance(session, str):
+#         with open(session, "rb") as f:
+#             session = pickle.load(f)
     
-    # Setting up figure size
-    plt.figure(figsize=(14,10))
+#     # Setting up figure size
+#     plt.figure(figsize=(14,10))
     
-    # Loading y_true and y_pred arrays
-    y_true = np.array(session[y_true])
-    y_pred = np.array(session[y_pred])
+#     # Loading y_true and y_pred arrays
+#     y_true = np.array(session[y_true])
+#     y_pred = np.array(session[y_pred])
     
     
-    # Reshaping arrays if CV was used
+#     # Reshaping arrays if CV was used
     if len(y_true.shape) > 2:
         y_true = y_true.reshape((-1, y_true.shape[-1]))
         
